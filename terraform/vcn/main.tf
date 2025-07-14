@@ -1,6 +1,6 @@
 terraform {  
   backend "oci" {
-    bucket = "bucket-tag"
+    bucket = "bucket-TE"
     key = "tf_demo_native_backend.tfstate"
     namespace = "id3kvohtwgjy"
     config_file_profile = "DEFAULT"
