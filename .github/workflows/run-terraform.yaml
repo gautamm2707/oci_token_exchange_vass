@@ -1,4 +1,4 @@
-name: Run Terraform with GitHub OIDC to OCI UPST
+name: Run Terraform with GitHub OIDC to OCI UPST with oci backend
 
 on:
   workflow_dispatch:
