@@ -145,40 +145,5 @@ jobs:
         if: env.success == 'true'
         # try to use env vars instead of .oci/config
         #run: terraform init
-        run: terraform init -backend-config="access_key=${{ secrets.AWS_ACCESS_KEY_ID }}" -backend-config="secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}"
+        run: TF_LOG=DEBUG terraform init 
         working-directory: terraform/vcn
-        env:
-          AWS_REQUEST_CHECKSUM_CALCULATION: "when_required"
-          AWS_REQUEST_CHECKSUM_VALIDATION: "when_required"
-
-      - name: Terraform Plan (VCN)
-        if: env.success == 'true'
-        run: terraform plan
-        env:
-          #TF_VAR_tenancy_ocid: ${{ secrets.TF_VAR_TENANCY_OCID }}
-          #TF_VAR_user_ocid: ${{ secrets.TF_VAR_USER_OCID }}
-          #TF_VAR_fingerprint: ${{ secrets.TF_VAR_FINGERPRINT }}
-          #TF_VAR_private_key: ${{ secrets.TF_VAR_PRIVATE_KEY }}
-          AWS_REQUEST_CHECKSUM_CALCULATION: "when_required"
-          AWS_REQUEST_CHECKSUM_VALIDATION: "when_required"
-          # Add other env vars or credentials as needed
-        working-directory: terraform/vcn
-
-      - name: Terraform Apply (VCN)
-        if: env.success == 'true'
-        run: terraform apply -auto-approve
-        env:
-          #TF_VAR_tenancy_ocid: ${{ secrets.TF_VAR_TENANCY_OCID }}
-          #TF_VAR_user_ocid: ${{ secrets.TF_VAR_USER_OCID }}
-          #TF_VAR_fingerprint: ${{ secrets.TF_VAR_FINGERPRINT }}
-          #TF_VAR_private_key: ${{ secrets.TF_VAR_PRIVATE_KEY }}
-          AWS_REQUEST_CHECKSUM_CALCULATION: "when_required"
-          AWS_REQUEST_CHECKSUM_VALIDATION: "when_required"
-          # Add other env vars or credentials as needed
-        working-directory: terraform/vcn
-
-      - name: list OCI
-        run: ls -l $HOME/.oci/*
-        
-      
-        

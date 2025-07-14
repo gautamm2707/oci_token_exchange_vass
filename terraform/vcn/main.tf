@@ -1,7 +1,7 @@
 terraform {  
   backend "oci" {
     bucket = "bucket-TE"
-    key = "tf_demo_native_backend.tfstate"
+    key = "tf_demo_oci_backend.tfstate"
     namespace = "id3kvohtwgjy"
     config_file_profile = "DEFAULT"
     auth = "SecurityToken"
